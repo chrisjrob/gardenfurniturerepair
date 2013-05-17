@@ -1,5 +1,7 @@
-gardenfurniturerepair
-=====================
+Garden Furniture Repair
+=======================
 
-OpenSCAD design for replacement brace and clip
-for a plastic garden chair.
+Description
+-----------
+
+OpenSCAD design for replacement brace and clip for a plastic garden chair.
