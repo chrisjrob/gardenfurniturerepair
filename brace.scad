@@ -1,3 +1,8 @@
+// brace.scad
+// Brace for Garden Furniture Repair
+// 
+// Copyright 2013 Christopher Roberts
+
 // Render objects
 clip  = 1;
 brace = 0;
