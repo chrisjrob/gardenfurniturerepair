@@ -8,6 +8,7 @@ Licensed under the [GPL v3 Licence](https://github.com/chrisjrob/gardenfurniture
 Description
 -----------
 OpenSCAD design for replacement brace and clip for a plastic garden chair.
+It is a very specific item, but perhaps it could be the starting point for something more generic.
 
 Status
 ------
