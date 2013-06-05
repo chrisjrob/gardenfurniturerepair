@@ -18,8 +18,9 @@
 
 
 // Render objects
-clip  = 1;
+clip  = 0;
 brace = 0;
+demo  = 1;
 
 // Global Parameters
 precision             = 100;
@@ -61,16 +62,16 @@ module brace() {
 
         // Things that don't exist
         union() {
-            translate( v = [ brace_thickness, brace_thickness + brace_width, brace_thickness ] )
-                curved_rectangle( brace_width - brace_thickness * 2, brace_length - brace_thickness *2 - brace_width*2, brace_height - brace_thickness );
+            translate( v = [ brace_thickness, brace_thickness + brace_width, brace_thickness - 0.1 ] )
+                curved_rectangle( brace_width - brace_thickness * 2, brace_length - brace_thickness *2 - brace_width*2, brace_height - brace_thickness + 0.2 );
 
             // Posts
-            translate( v = [brace_width/2, brace_width/2, 0] ) cylinder( r = post_inner_diameter/2, h = post_height, $fn = precision );
-            translate( v = [brace_width/2, brace_length - brace_width/2, 0] ) cylinder( r = post_inner_diameter/2, h = post_height, $fn = precision );
+            translate( v = [brace_width/2, brace_width/2, -0.1] ) cylinder( r = post_inner_diameter/2, h = post_height + 0.2, $fn = precision );
+            translate( v = [brace_width/2, brace_length - brace_width/2, -0.1] ) cylinder( r = post_inner_diameter/2, h = post_height + 0.2, $fn = precision );
 
             // Recess
-            translate( v = [brace_width/2, brace_width/2, 0] ) cylinder( r1 = post_outer_diameter/2, r2 = clip_bellend_diameter/2, h = post_recess_height, $fn = precision );
-            translate( v = [brace_width/2, brace_length - brace_width/2, 0] ) cylinder( r1 = post_outer_diameter/2, r2 = clip_bellend_diameter/2, h = post_recess_height, $fn = precision );
+            translate( v = [brace_width/2, brace_width/2, -0.1] ) cylinder( r1 = post_outer_diameter/2, r2 = clip_bellend_diameter/2, h = post_recess_height + 0.2, $fn = precision );
+            translate( v = [brace_width/2, brace_length - brace_width/2, -0.1] ) cylinder( r1 = post_outer_diameter/2, r2 = clip_bellend_diameter/2, h = post_recess_height + 0.2, $fn = precision );
         }
     
     }
@@ -133,4 +134,10 @@ if (clip == 1) {
 }
 if (brace == 1) {
     brace();
+}
+if (demo == 1) {
+    translate( v = [0, brace_length/2, 0]) {
+        translate( v = [-clip_length, 0, clip_cap_diameter/2 + (brace_width - clip_cap_diameter)/2] ) rotate( a = [90, 0, 90] ) clip();
+        translate( v = [brace_height + post_height, post_outer_diameter/2, brace_width] ) rotate( a = [270, 90, 90] ) brace();
+    }
 }
